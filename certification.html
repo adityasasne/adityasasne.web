@@ -1,0 +1,93 @@
+<!-- Add this section after the Blog section in index.html -->
+<<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blog Post 1</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <canvas id="matrix"></canvas>
+
+  <header>
+    <div class="nav-container">
+      <h1 class="logo">Aditya Sasne</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html#about">About Me</a></li>
+          <li><a href="blogs.html">Blog</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+          <li><a href="resume.pdf" download>Download CV</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Add this section after the Blog section in index.html -->
+<!-- Replace the entire certifications section with this code -->
+    <section id="certifications" class="certifications">
+      <h2>My Certifications</h2>
+      <div class="certs-container">
+        <!-- OSCP -->
+        <div class="cert-card" data-cert="oscp">
+          <h3>OSCP</h3>
+          <p>Offensive Security Certified Professional</p>
+          <span>2024</span>
+          <button class="view-cert-btn">View Certificate</button>
+        </div>
+        
+        <!-- CEH -->
+        <div class="cert-card" data-cert="ceh">
+          <h3>CEH</h3>
+          <p>Certified Ethical Hacker</p>
+          <span>2023</span>
+          <button class="view-cert-btn">View Certificate</button>
+        </div>
+        
+        <!-- Security+ -->
+        <div class="cert-card" data-cert="securityplus">
+          <h3>CompTIA Security+</h3>
+          <p>Security Certification</p>
+          <span>2023</span>
+          <button class="view-cert-btn">View Certificate</button>
+        </div>
+        
+        <!-- eJPT -->
+        <div class="cert-card" data-cert="ejpt">
+          <h3>eJPT</h3>
+          <p>eLearnSecurity Junior Penetration Tester</p>
+          <span>2022</span>
+          <button class="view-cert-btn">View Certificate</button>
+        </div>
+        
+        <!-- CRTP -->
+        <div class="cert-card" data-cert="crtp">
+          <h3>CRTP</h3>
+          <p>Certified Red Team Professional</p>
+          <span>2023</span>
+          <button class="view-cert-btn">View Certificate</button>
+        </div>
+      </div>
+      
+      <!-- Certificate Modal -->
+      <div id="certModal" class="modal">
+        <div class="modal-content">
+          <span class="close-btn">&times;</span>
+          <img id="certImage" src="" alt="Certificate">
+          <div class="cert-info">
+            <h3 id="certTitle"></h3>
+            <p id="certDescription"></p>
+            <p id="certYear"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  <footer>
+    <p>&copy; 2025 Aditya Sasne | Ethical Hacker</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
