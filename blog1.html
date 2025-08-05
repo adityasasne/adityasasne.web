@@ -3,7 +3,134 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>B<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Blog Post 1</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <canvas id="matrix"></canvas>
+
+  <header>
+    <div class="nav-container">
+      <h1 class="logo">Aditya Sasne</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html#about">About Me</a></li>
+          <li><a href="blogs.html">Blog</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+          <li><a href="resume.pdf" download>Download CV</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="content">
+    <h2>Kerberos Conqueror: Domain Domination</h2>
+    <p>Hey readers this is a walkthrough a challenge of CEH global challenge which release on Jun-2025. <br>
+
+      Machine name - Kerberos Conqueror: Domain Domination <br>
+      
+      Description - The target is Windows Actie Directory environment centered around a Domain Controller accessible within the network. You must gain control over a specific machine at IP address 172.168.1.5, which holds vital clues.
+      
+      Flags<br>
+      
+      Challenge 1 : What is the fully qualified domain name (FQDN) associate with the IP address 172.168.1.5? <br>
+      
+      Challenge 2 : Identify the username and password required to access the system at IP address 172.168.1.5. <br>
+      
+      Challenge 3 : Locate the file name Client Flag.txt on the client machine and submit its contents. <br>
+      
+      Challenge 4 : Determine the IP address of the Active Directory Domain Controller. <br>
+      
+      Challenge 5 : Identify an SPN-enable user account and crack its password. Submit the cracked password. <br>
+      
+      Challenge 6 : Locate the file name Final Flag.txt on the Domain Controller and submit its contents. <br>
+       
+      <br><br>
+
+      Level : Medium <br>
+      Flags : There are two flags (client.txt & Final flag.txt) <br>
+      IP Address : 172.168.1.5 <br>
+      Methodology: <br>
+      - Port scanning and IP discovery
+      - Enumerating users and cracking weak passwords.
+      - Identifying and enumerating SPN-enable user accounts.
+      - Cracking Kerberos tickets to recover user passwords. <br>
+      <p>
+      Walkthrough <br>
+      
+      lets start with port scanning and find out which ports are open and Domain name. <br>
+      
+      command - nmap -Pn -sV -sC 172.168.1.5 -o scan.txt <br>
+
+      <img src="img/screen_short1.png" alt="My profile picture" width="400" height="200"> <br>
+
+      
+      So, here we get RDP (remote desktop protocol) 3389, Domain name : Research.ecore.local (challenge 1 answer).  
+      
+      <p>
+      lets perform a brute force on rdp protocol using hydra
+      
+      command - hydra -L Username.txt -P Password.txt rdp://172.168.1.5
+
+      <img src="img/screen_short2.png" alt="My profile picture" width="400" height="200"> <br>
+      
+      
+      we get the username and password for the windows10 machine as client01 and client@123# respectively (challenge 2 answer).
+      </p>
+      <p>
+      lets connect to the windows machine 172.168.1.5 using Remnina tool just put username client01 password client@123# and Domain name Research.ecore.local
+      
+      on the desktop of the machine you will get the Client flag FLAG{C1ient_acc3ss}
+
+      <img src="img/screen_short3.png" alt="My profile picture" width="400" height="200"> <br>
+      </p>
+      <p>
+      lets continue on enumerating for the domain controller machine. In CMD type - ipconfig /all 
+       to get every ipaddress of that machine those are communicating to it.<br>
+
+       <img src="img/screen_short4.png" alt="My profile picture" width="400" height="200"> <br>
+
+      we get the ip address as 10.10.1.1 while using ping from the kali machine (attacker) the machine is not responding.
+      
+      </p>
+      <p>
+      using Rubeus tool for (extract Service Ticket Hashes) from the domain control
+      command - Rubeus.exe kerberoast /outfile:hashes.txt <br>
+      <img src="img/screen_short5.png" alt="My profile picture" width="400" height="200">
+      </p>
+      <p>
+      now crack the hash-password using hashcat <br>
+      command - hashcat -m 13100 -a hash.txt passwords.txt <br>
+      <img src="img/screen_short6.png" alt="My profile picture" width="400" height="200"> <br>
+      
+      we get the crack hash as 'Passw0rd!' for the user sql_svc <br>
+      
+      using winrm we can connect to the domain controller machine
+      command Enter-PSSession -ComputerName - SubDC01 -Credential sql_svc <br>
+        Passw0rd! <br>
+        <img src="img/screen_short7.png" alt="My profile picture" width="400" height="200"> <br>
+        
+      The last flag is located at Desktop flag FLAG(d0m@1n_r00t) <br>
+      <img src="img/screen_short8.png" alt="My profile picture" width="400" height="200"> <br>
+      </p>
+
+      <img src="img/screen_short9.png" alt="My profile picture" width="400" height="200"> <br>
+      </p>
+    
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Aditya Sasne | Ethical Hacker</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>log Post 1</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
