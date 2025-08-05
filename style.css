@@ -4,7 +4,333 @@ body, html {
   padding: 0;
   font-family: monospace;
   background: black;
+  color: #00ff00;/* Global */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: monospace;
+  background: black;
   color: #00ff00;
+  overflow-x: hidden;
+}
+
+canvas#matrix {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+/* Header */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  z-index: 2;
+  padding: 10px 0;
+  border-bottom: 1px solid #00ff00;
+}
+
+.nav-container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  color: #00ff00;
+  font-size: 20px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #00ff00;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: #00ffaa;
+}
+
+/* Main Content */
+.content {
+  margin-top: 100px;
+  padding: 20px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  z-index: 1;
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.7);
+  border: 1px solid #00ff00;
+  border-radius: 10px;
+}
+
+section {
+  margin-bottom: 2rem;
+}
+
+h2, h3 {
+  color: #00ff00;
+  text-shadow: 0 0 5px #00ff00;
+}
+
+iframe {
+  width: 100%;
+  height: 100px;
+  border: none;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 10px;
+  color: #00ff00;
+  background: rgba(0, 0, 0, 0.85);
+  border-top: 1px solid #00ff00;
+}
+
+/* Add to style.css */
+/* Contact Form Styles */
+.contact form {
+  display: grid;
+  gap: 1.5rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 8px;
+  color: #00ff00;
+  font-size: 16px;
+}
+
+.form-group input,
+.form-group textarea {
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid #00ff00;
+  border-radius: 4px;
+  padding: 12px;
+  color: #00ff00;
+  font-family: monospace;
+  font-size: 14px;
+  transition: all 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #00ffaa;
+  box-shadow: 0 0 8px rgba(0, 255, 170, 0.5);
+}
+
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin-top: 10px;
+}
+
+.btn {
+  padding: 12px 24px;
+  border: 1px solid #00ff00;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.7);
+  color: #00ff00;
+  font-family: monospace;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-align: center;
+  text-decoration: none;
+  flex: 1;
+}
+
+.download-btn {
+  background: rgba(0, 255, 0, 0.1);
+}
+
+.submit-btn {
+  background: rgba(0, 0, 0, 0.9);
+}
+
+.btn:hover {
+  background: rgba(0, 255, 170, 0.2);
+  color: #00ffaa;
+  border-color: #00ffaa;
+  text-shadow: 0 0 5px #00ffaa;
+}
+
+
+/* Add to style.css */
+/* Certifications Section */
+.certifications {
+  margin-top: 2rem;
+}
+
+.certs-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 1.5rem;
+}
+
+.cert-card {
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid #00ff00;
+  border-radius: 8px;
+  padding: 20px;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.cert-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+  border-color: #00ffaa;
+}
+
+.cert-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: #00ff00;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s;
+}
+
+.cert-card:hover::before {
+  transform: scaleX(1);
+}
+
+.cert-card h3 {
+  color: #00ffaa;
+  margin-top: 0;
+  font-size: 1.5rem;
+}
+
+.cert-card p {
+  margin: 10px 0;
+  min-height: 40px;
+}
+
+.cert-card span {
+  display: block;
+  color: #00ff00;
+  font-size: 0.9rem;
+  border-top: 1px dashed #00ff00;
+  padding-top: 10px;
+  margin-top: 10px;
+}
+
+/* Add to style.css */
+/* View Certificate Button */
+.view-cert-btn {
+  display: block;
+  width: 100%;
+  margin-top: 15px;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid #00ff00;
+  border-radius: 4px;
+  color: #00ff00;
+  font-family: monospace;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.view-cert-btn:hover {
+  background: rgba(0, 255, 0, 0.2);
+  color: #00ffaa;
+  border-color: #00ffaa;
+  text-shadow: 0 0 5px #00ffaa;
+}
+
+/* Certificate Modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.modal-content {
+  position: relative;
+  margin: 5% auto;
+  padding: 20px;
+  width: 80%;
+  max-width: 900px;
+  background: rgba(0, 0, 0, 0.95);
+  border: 2px solid #00ff00;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+}
+
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  color: #00ff00;
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.close-btn:hover {
+  color: #ff0033;
+  text-shadow: 0 0 10px rgba(255, 0, 51, 0.7);
+}
+
+#certImage {
+  width: 100%;
+  max-height: 600px;
+  object-fit: contain;
+  border: 1px solid #00ff00;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.cert-info {
+  padding: 15px;
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid #00ff00;
+  border-radius: 5px;
+}
+
+.cert-info h3 {
+  margin-top: 0;
+  color: #00ffaa;
+}
+
+.cert-info p {
+  margin: 10px 0;
+}
   overflow-x: hidden;
 }
 
