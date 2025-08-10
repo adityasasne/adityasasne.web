@@ -152,3 +152,32 @@ document.addEventListener("keydown", function(event) {
     document.body.style.overflow = "auto";
   }
 });
+
+// Animate progress bars when skills section comes into view
+function animateProgressBars() {
+  const progressBars = document.querySelectorAll('.progress');
+  
+  progressBars.forEach(bar => {
+    const targetWidth = bar.style.width;
+    bar.style.width = '0%';
+    
+    setTimeout(() => {
+      bar.style.width = targetWidth;
+    }, 100);
+  });
+}
+
+// Intersection Observer to trigger animation
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      animateProgressBars();
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+
+const skillsSection = document.getElementById('skills');
+if (skillsSection) {
+  observer.observe(skillsSection);
+}
