@@ -40,6 +40,17 @@ header {
   font-size: 20px;
 }
 
+.projects {
+  color: #00ff00;
+  font-size: 18px;
+}
+
+.about {
+  color: #00ff00;
+  font-size: 18px;
+}
+
+
 nav ul {
   list-style: none;
   display: flex;
